@@ -17,7 +17,8 @@ export default function Home() {
         className={`flex min-h-screen flex-col items-center justify-between p-12 ${inter.className} bg-green-300`}
       >
         <div className="pb-16" style={{ fontFamily: '"Lato", sans-serif' }}>
-
+        {/* Code block starts */}
+        <dh-component>
           <section className="max-w-8xl mx-auto container bg-white pt-16">
             <div>
               <div role="contentinfo" className="flex items-center flex-col px-4 justify-center">
@@ -73,13 +74,13 @@ export default function Home() {
                     <p tabIndex={0} className="focus:outline-none text-base text-gray-600 leading-normal pt-2">If money can come in between a marriage. It can certainly rip friendships apart.</p>
                   </div>
                 </div>
-              </div>
-              <div className="flex justify-center pb-2">
-                <JoinTableComponent />
+            <JoinTableComponent />
               </div>
             </div>
           </section>
-        </div>
+        </dh-component>
+        {/* Code block ends */}
+      </div>
       </main>
     </>
   )

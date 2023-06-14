@@ -12,6 +12,7 @@ export default function Home() {
       <Head>
         <title>BitePay - Home</title>
         <meta name="description" content="The fastest and easiest way to divvy up the dining bill between your friends."></meta>
+        <html data-theme="cmyk"></html>
       </Head>
       <main
         className={`flex min-h-screen flex-col items-center justify-between p-12 ${inter.className} bg-green-300`}

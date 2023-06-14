@@ -2,7 +2,6 @@ import Image from 'next/image'
 import Head from "next/head";
 import Link from "next/link";
 import { Inter } from 'next/font/google'
-import { JoinTableComponent } from '@/components/JoinTableComponent';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,21 +13,22 @@ export default function Home() {
         <meta name="description" content="The fastest and easiest way to divvy up the dining bill between your friends."></meta>
       </Head>
       <main
-        className={`flex min-h-screen flex-col items-center justify-between p-12 ${inter.className} bg-green-300`}
+        className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className} bg-green-300 bg-transparent`}
       >
         <div className="pb-16" style={{ fontFamily: '"Lato", sans-serif' }}>
-
+        {/* Code block starts */}
+        <dh-component>
           <section className="max-w-8xl mx-auto container bg-white pt-16">
             <div>
-              <div role="contentinfo" className="flex items-center flex-col px-4 justify-center">
+              <div role="contentinfo" className="flex items-center flex-col px-4">
                 <hh1 tabIndex={0} className="focus:outline-none text-4xl lg:text-4xl font-extrabold text-center leading-10 text-gray-800 lg:w-5/12 md:w-9/12 p-4">BitePay.xyz</hh1>
                 <p tabIndex={0} className="focus:outline-none uppercase text-sm text-center text-gray-600 leading-4">Only pay for what you bit....</p>
               </div>
-              <div tabIndex={0} aria-label="group of cards" className="focus:outline-none mt-20 flex flex-wrap justify-center gap-10 px-4 items-center">
+              <div tabIndex={0} aria-label="group of cards" className="focus:outline-none mt-20 flex flex-wrap justify-center gap-10 px-4">
                 <div tabIndex={0} aria-label="card 1" className="focus:outline-none flex sm:w-full md:w-5/12 pb-20">
                   <div className="w-20 h-20 relative mr-5">
                     <div className="absolute top-0 right-0 bg-indigo-100 rounded w-16 h-16 mt-2 mr-1" />
-                    <div className="absolute text-white bottom-0 left-0 bg-green-400 rounded w-16 h-16 flex items-center justify-center mt-2 mr-3">
+                    <div className="absolute text-white bottom-0 left-0 bg-indigo-700 rounded w-16 h-16 flex items-center justify-center mt-2 mr-3">
                       <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/icon_and_text-SVG1.svg" alt="drawer" />
                     </div>
                   </div>
@@ -40,7 +40,7 @@ export default function Home() {
                 <div tabIndex={0} aria-label="card 2" className="focus:outline-none flex sm:w-full md:w-5/12 pb-20">
                   <div className="w-20 h-20 relative mr-5">
                     <div className="absolute top-0 right-0 bg-indigo-100 rounded w-16 h-16 mt-2 mr-1" />
-                    <div className="absolute text-white bottom-0 left-0 bg-green-400 rounded w-16 h-16 flex items-center justify-center mt-2 mr-3">
+                    <div className="absolute text-white bottom-0 left-0 bg-indigo-700 rounded w-16 h-16 flex items-center justify-center mt-2 mr-3">
                       <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/icon_and_text-SVG2.svg" alt="check" />
                     </div>
                   </div>
@@ -52,7 +52,7 @@ export default function Home() {
                 <div tabIndex={0} aria-label="card 3" className="focus:outline-none flex sm:w-full md:w-5/12 pb-20">
                   <div className="w-20 h-20 relative mr-5">
                     <div className="absolute top-0 right-0 bg-indigo-100 rounded w-16 h-16 mt-2 mr-1" />
-                    <div className="absolute text-white bottom-0 left-0 bg-green-400 rounded w-16 h-16 flex items-center justify-center mt-2 mr-3">
+                    <div className="absolute text-white bottom-0 left-0 bg-indigo-700 rounded w-16 h-16 flex items-center justify-center mt-2 mr-3">
                       <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/icon_and_text-SVG3.svg" alt="html tag" />
                     </div>
                   </div>
@@ -64,7 +64,7 @@ export default function Home() {
                 <div tabIndex={0} aria-label="card 4" className="focus:outline-none flex sm:w-full md:w-5/12 pb-20">
                   <div className="w-20 h-20 relative mr-5">
                     <div className="absolute top-0 right-0 bg-indigo-100 rounded w-16 h-16 mt-2 mr-1" />
-                    <div className="absolute text-white bottom-0 left-0 bg-green-400 rounded w-16 h-16 flex items-center justify-center mt-2 mr-3">
+                    <div className="absolute text-white bottom-0 left-0 bg-indigo-700 rounded w-16 h-16 flex items-center justify-center mt-2 mr-3">
                       <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/icon_and_text-SVG4.svg" alt="monitor" />
                     </div>
                   </div>
@@ -74,12 +74,11 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="flex justify-center pb-2">
-                <JoinTableComponent />
-              </div>
             </div>
           </section>
-        </div>
+        </dh-component>
+        {/* Code block ends */}
+      </div>
       </main>
     </>
   )
