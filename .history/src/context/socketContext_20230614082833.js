@@ -11,7 +11,7 @@ export const SocketProvider = ({ children }) => {
 
   // Establish the Socket.IO connection when the component mounts
   useEffect(() => {
-    const socket = io('http://ec2-54-86-158-212.compute-1.amazonaws.com:3000');
+    const socket = io('ws://54.86.158.212');
     setSocket(socket);
 
     socket.on('connect', () => {
