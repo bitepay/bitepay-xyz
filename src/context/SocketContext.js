@@ -1,5 +1,5 @@
 'use client';
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState, useContext } from 'react';
 import { io } from 'socket.io-client';
 
 // Create a new context
@@ -11,7 +11,7 @@ export const SocketProvider = ({ children }) => {
 
   // Establish the Socket.IO connection when the component mounts
   useEffect(() => {
-    const socket = io('https://ec2-54-86-158-212.compute-1.amazonaws.com:3000');
+    const socket = io('https://bitepay.xyz');
     setSocket(socket);
 
     socket.on('connect', () => {
@@ -38,3 +38,6 @@ export const SocketProvider = ({ children }) => {
 
 // Export the SocketContext
 export default SocketContext;
+
+// Export a custom hook that can be used to consume this context
+export const useSocketContext = () => useContext(SocketContext); 
