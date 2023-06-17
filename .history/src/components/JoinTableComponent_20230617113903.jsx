@@ -6,8 +6,6 @@ import { useUserContext } from '@/context/UserContext'
 export const JoinTableComponent = () => {
   const router = useRouter();
 
-  const { user, setUser } = useUserContext();
-
   let userName = "";
   let tableID = "";
 
