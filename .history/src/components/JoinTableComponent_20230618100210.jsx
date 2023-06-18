@@ -7,7 +7,7 @@ export const JoinTableComponent = () => {
   const router = useRouter();
 
   const { user } = useUserSocketContext();
-  console.log(`Current user object: ${user}`)
+  console.log(`Current user object: ${JSON.stringify(user)}`)
 
   let userName = "";
   let tableID = "";

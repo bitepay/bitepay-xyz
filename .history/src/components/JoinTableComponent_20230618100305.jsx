@@ -6,8 +6,8 @@ import { useUserSocketContext } from '@/context/UserSocketContext'
 export const JoinTableComponent = () => {
   const router = useRouter();
 
-  const { user } = useUserSocketContext();
-  console.log(`Current user object: ${user}`)
+  // const { user } = useUserSocketContext();
+  // console.log(`Current user object: ${JSON.stringify(user)}`)
 
   let userName = "";
   let tableID = "";

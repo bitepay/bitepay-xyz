@@ -1,10 +1,10 @@
 import '@/styles/globals.css';
-import { UserSocketProvider } from '@/context/UserSocketContext';
+import { SocketProvider } from '@/context/UserSocketContext';
 
 export default function App({ Component, pageProps }) {
   return (
-    <UserSocketProvider>
+    <SocketProvider>
       <Component {...pageProps} />
-    </UserSocketProvider>
+    </SocketProvider>
   )
 }
