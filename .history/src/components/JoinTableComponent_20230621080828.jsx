@@ -6,8 +6,8 @@ import { useUserSocketContext } from '@/context/UserSocketContext'
 export const JoinTableComponent = () => {
   const router = useRouter();
 
-  const { user } = useUserSocketContext();
-  console.log(`Current user object: ${user}`)
+  const { user, setUser } = useUserSocketContext();
+  console.log(`Current user object: ${JSON.stringify(user)}`)
 
   let userName = "";
   let tableID = "";
@@ -26,7 +26,7 @@ export const JoinTableComponent = () => {
     e.preventDefault();
     console.log(`userName: ${userName}`);
     console.log(`tableID: ${tableID}`);
-    router.push(`/table/${userName}/${tableID}`);
+    router.push(`/table/${tableID}`);
   };
 
   return (

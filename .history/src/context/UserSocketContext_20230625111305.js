@@ -1,7 +1,7 @@
 'use client';
 import React, { createContext, useEffect, useState, useContext } from 'react'
 import { io } from 'socket.io-client'
-
+import { useRouter } from 'next/router'
 
 // Create a new context
 const UserSocketContext = createContext({});
@@ -22,6 +22,8 @@ export const UserSocketProvider = ({ children }) => {
   });
 
   const [tableMembers, setTableMembers] = useState([]);
+
+  const router = useRouter();
 
   const handleSocketDisconnect = () => {
     // redirect to disconnected page
@@ -89,6 +91,9 @@ export const UserSocketProvider = ({ children }) => {
 
     socket.on('disconnect', () => { 
       console.log('Disconnected from the ws server!');
+
+      // redirect to disconnected page
+      handleSocketDisconnect();
     });
 
     // Clean up the socket connection when the component unmounts
@@ -100,7 +105,7 @@ export const UserSocketProvider = ({ children }) => {
       socket.off('userLeft');
       socket.disconnect();
     };
-  }, [user.id]);
+  }, [user.id, handleSocketDisconnect]);
 
   // Provide the socket object to the child components
   return (

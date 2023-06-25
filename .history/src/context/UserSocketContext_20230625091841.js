@@ -1,7 +1,6 @@
 'use client';
-import React, { createContext, useEffect, useState, useContext } from 'react'
-import { io } from 'socket.io-client'
-
+import React, { createContext, useEffect, useState, useContext } from 'react';
+import { io } from 'socket.io-client';
 
 // Create a new context
 const UserSocketContext = createContext({});
@@ -23,14 +22,8 @@ export const UserSocketProvider = ({ children }) => {
 
   const [tableMembers, setTableMembers] = useState([]);
 
-  const handleSocketDisconnect = () => {
-    // redirect to disconnected page
-    router.push('/disconnected');
-  }
-
   // Establish the Socket.IO connection when the component mounts
   useEffect(() => {
-
     const socket = io('https://bitepay.xyz');
     setSocket(socket);
 
@@ -38,17 +31,18 @@ export const UserSocketProvider = ({ children }) => {
       console.log('Successfully connected to the ws server!')
     })
 
-    socket.on('setId', (data) => setUser((prevUser) => {
-      prevUser.id = data
-      return prevUser;
-    }));
+    socket.on('disconnect', () => {
+      console.log('Disconnected from the ws server!')
+    })
+
+    socket.on('setId', (data) => setUser((prevUser) => prevUser.id = data));
 
     socket.on('tableMembers', (data) => {
       // setTableMembers([...data.slice()]);
       // console.log(JSON.stringify(tableMembers))
       setTableMembers((prevTableMembers) => {
-        return [...data.slice()]
-      })
+        return [...data.slice()];
+      });
     })
 
     socket.on('tableMemberUpdate', (data) => {
@@ -61,35 +55,31 @@ export const UserSocketProvider = ({ children }) => {
           prevUser.total = data.total;
           prevUser.status = data.status;
           return prevUser;
-        })
+        });
       }
 
       setTableMembers((prevTableMembers) => {
         return prevTableMembers.map((member) => {
           if (member.id === data.id) {
-            member.myItems = data.myItems
-            member.tip = data.tip
-            member.total = data.total
-            member.status = data.status
-            return member
+            member.myItems = data.myItems;
+            member.tip = data.tip;
+            member.total = data.total;
+            member.status = data.status;
+            return member;
           } else {
-            return member
+            return member;
           }
         })
-      })
+      });
     });
 
     socket.on('userLeft', (data) => {
       setTableMembers((prevTableMembers) => {
         return prevTableMembers.filter((member) => {
-          return member.id !== data.id
+          return member.id !== data.id;
         })
-      })
-    });
-
-    socket.on('disconnect', () => { 
-      console.log('Disconnected from the ws server!');
-    });
+      });
+    })
 
     // Clean up the socket connection when the component unmounts
     return () => {
@@ -100,7 +90,7 @@ export const UserSocketProvider = ({ children }) => {
       socket.off('userLeft');
       socket.disconnect();
     };
-  }, [user.id]);
+  }, []);
 
   // Provide the socket object to the child components
   return (

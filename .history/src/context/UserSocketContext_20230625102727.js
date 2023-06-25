@@ -1,7 +1,6 @@
 'use client';
-import React, { createContext, useEffect, useState, useContext } from 'react'
-import { io } from 'socket.io-client'
-
+import React, { createContext, useEffect, useState, useContext } from 'react';
+import { io } from 'socket.io-client';
 
 // Create a new context
 const UserSocketContext = createContext({});
@@ -23,14 +22,8 @@ export const UserSocketProvider = ({ children }) => {
 
   const [tableMembers, setTableMembers] = useState([]);
 
-  const handleSocketDisconnect = () => {
-    // redirect to disconnected page
-    router.push('/disconnected');
-  }
-
   // Establish the Socket.IO connection when the component mounts
   useEffect(() => {
-
     const socket = io('https://bitepay.xyz');
     setSocket(socket);
 
@@ -38,10 +31,7 @@ export const UserSocketProvider = ({ children }) => {
       console.log('Successfully connected to the ws server!')
     })
 
-    socket.on('setId', (data) => setUser((prevUser) => {
-      prevUser.id = data
-      return prevUser;
-    }));
+    socket.on('setId', (data) => setUser({...user, id: data}));
 
     socket.on('tableMembers', (data) => {
       // setTableMembers([...data.slice()]);
@@ -87,9 +77,7 @@ export const UserSocketProvider = ({ children }) => {
       })
     });
 
-    socket.on('disconnect', () => { 
-      console.log('Disconnected from the ws server!');
-    });
+    socket.on('disconnect', () => { console.log('Disconnected from the ws server!') });
 
     // Clean up the socket connection when the component unmounts
     return () => {
@@ -100,7 +88,7 @@ export const UserSocketProvider = ({ children }) => {
       socket.off('userLeft');
       socket.disconnect();
     };
-  }, [user.id]);
+  }, []);
 
   // Provide the socket object to the child components
   return (

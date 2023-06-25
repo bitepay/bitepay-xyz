@@ -3,8 +3,7 @@ import Image from 'next/image'
 import Head from "next/head";
 import Link from "next/link";
 import { Inter } from 'next/font/google'
-import { JoinTable } from '@/components/JoinTable';
-import { ToggleTheme } from '@/components/ToggleTheme';
+import { JoinTableComponent } from '@/components/JoinTableComponent';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,10 +20,9 @@ export default function Home() {
         <div className="pb-16" style={{ fontFamily: '"Lato", sans-serif' }}>
 
           <section className="max-w-8xl mx-auto container bg-white pt-16">
-            <ToggleTheme />
             <div>
               <div role="contentinfo" className="flex items-center flex-col px-4 justify-center">
-                <h1 tabIndex={0} className="focus:outline-none text-4xl lg:text-4xl font-extrabold text-center leading-10 text-gray-800 lg:w-5/12 md:w-9/12 p-4">BitePay.xyz</h1>
+                <hh1 tabIndex={0} className="focus:outline-none text-4xl lg:text-4xl font-extrabold text-center leading-10 text-gray-800 lg:w-5/12 md:w-9/12 p-4">BitePay.xyz</hh1>
                 <p tabIndex={0} className="focus:outline-none uppercase text-sm text-center text-gray-600 leading-4">Only pay for what you bit....</p>
               </div>
               <div tabIndex={0} aria-label="group of cards" className="focus:outline-none mt-20 flex flex-wrap justify-center gap-10 px-4 items-center">
@@ -78,7 +76,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="flex justify-center pb-2">
-                <JoinTable />
+                <JoinTableComponent />
               </div>
             </div>
           </section>
