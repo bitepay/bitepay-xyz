@@ -45,7 +45,7 @@ export const TableBill = ({ tableMembers, user, handleUserDelete }) => {
                 <th className="px-5">Item</th>
                 <th className="px-5">Quantity</th>
                 <th className="px-5">Price</th>
-                <th className="px-5"></th>
+                <th className="px-5">Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -66,13 +66,13 @@ export const TableBill = ({ tableMembers, user, handleUserDelete }) => {
                 {member.username}
               </div>
               <div className="collapse-content">
-              <table className="table-auto mx-auto">
+              <table className="table-auto justify-center">
                 <thead>
                   <tr>
-                    <th className="px-5">Item</th>
-                    <th className="px-5">Quantity</th>
-                    <th className="px-5">Price</th>
-                    <th className="px-5"></th>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>----</th>
                   </tr>
                 </thead>
                 <tbody>

@@ -1,7 +1,8 @@
+import { MemberItems } from './MemberItems'
+import { UserItem } from './UserItem'
 import { useEffect, useState } from 'react';
 
 export const TableBill = ({ tableMembers, user, handleUserDelete }) => {
-
   const UserItem = (item) => {
     const { itemID, itemName, itemPrice, itemQuantity } = item
 
@@ -11,21 +12,8 @@ export const TableBill = ({ tableMembers, user, handleUserDelete }) => {
 				<td className="px-5">{itemQuantity}</td>
 				<td className="px-5">{itemPrice}</td>
 				{/* This is where we need to add the delete button for User delete feature */}
-				<td className="px-5"><button className="btn btn-outline btn-error" onClick={() => handleUserDelete(user, item)}>DELETE</button></td>
+				<td className="px-5"><button class="btn btn-outline btn-error" onClick={() => handleUserDelete(user, item)}>DELETE</button></td>
 			</tr>
-    )
-  }
-
-  const MemberItem = (item) => {
-    const { itemID, itemName, itemPrice, itemQuantity } = item
-
-    return (
-      <tr key={`member-item-${itemID}`}>
-        <td className="px-5">{itemName}</td>
-        <td className="px-5">{itemQuantity}</td>
-        <td className="px-5">{itemPrice}</td>
-        <td className="px-5">{' '}</td>
-      </tr>
     )
   }
 
@@ -45,7 +33,7 @@ export const TableBill = ({ tableMembers, user, handleUserDelete }) => {
                 <th className="px-5">Item</th>
                 <th className="px-5">Quantity</th>
                 <th className="px-5">Price</th>
-                <th className="px-5"></th>
+                <th className="px-5">Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -66,17 +54,17 @@ export const TableBill = ({ tableMembers, user, handleUserDelete }) => {
                 {member.username}
               </div>
               <div className="collapse-content">
-              <table className="table-auto mx-auto">
+              <table className="table-auto justify-center">
                 <thead>
                   <tr>
-                    <th className="px-5">Item</th>
-                    <th className="px-5">Quantity</th>
-                    <th className="px-5">Price</th>
-                    <th className="px-5"></th>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>----</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {member.myItems?.length ? member.myItems.map((item) => MemberItem(item)) : <tr key="user-no-items"><td>No items yet</td></tr>}
+                  {member.myItems?.length ? member.myItems.map((item) => UserItem(item)) : <tr key="user-no-items"><td>No items yet</td></tr>}
                 </tbody>
                 </table>
               </div>

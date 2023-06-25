@@ -69,10 +69,10 @@ export const TableBill = ({ tableMembers, user, handleUserDelete }) => {
               <table className="table-auto mx-auto">
                 <thead>
                   <tr>
-                    <th className="px-5">Item</th>
-                    <th className="px-5">Quantity</th>
-                    <th className="px-5">Price</th>
-                    <th className="px-5"></th>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>----</th>
                   </tr>
                 </thead>
                 <tbody>

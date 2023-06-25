@@ -29,11 +29,11 @@ export const AddItemInput = ({ handleUserAdd, user }) => {
 			<div className="join mx-auto">
 
 				<div>
-					<input className="input input-bordered join-item max-w-34" placeholder="Item name..." value={itemName} onChange={(e) => {setItemName(e.target.value)}}/>
+					<input className="input input-bordered join-item w-auto" placeholder="Item name..." value={itemName} onChange={(e) => {setItemName(e.target.value)}}/>
 				</div>
 
 				<div>
-					<input className="input input-bordered join-item w-28" placeholder="Price" type="number" value={itemPrice} onChange={(e) => {setItemPrice(e.target.value)}}/>
+					<input className="input input-bordered join-item w-auto" placeholder="Price" type="number" value={itemPrice} onChange={(e) => {setItemPrice(e.target.value)}}/>
 				</div>
 
 				<select className="select select-bordered join-item" value={itemQuantity} onChange={(e) => setItemQuantity(e.target.value)}>
@@ -62,7 +62,7 @@ export const AddItemInput = ({ handleUserAdd, user }) => {
 				</select>
 
 			</div>
-			<button class="btn btn-block btn-outline btn-info mt-2" onClick={(e) => handleClick(e) }>ADD ITEM</button>
+			<button class="btn btn-block btn-outline btn-info mt-2">ADD ITEM</button>
 		</>
 	)
 };

@@ -33,19 +33,17 @@ export const UserSocketProvider = ({ children }) => {
       console.log('Successfully connected to the ws server!')
     })
 
-    // set user id to the websocket id
     socket.on('setId', (data) => setUser((prevUser) => {
       prevUser.id = data
       return prevUser;
     }));
 
-    // listen to events from ws server regarding members of the table
     socket.on('tableMembers', (data) => setTableMembers((prevTableMembers) => { return [...data.slice()] }));
 
-    // listen to events from ws server regarding updates to tableMembers
     socket.on('tableMemberUpdate', (data) => {
 
       if (data.id === user.id) {
+        // setUser({...user, myItems: data.myItems, tip: data.tip, total: data.total, status: data.status});
         setUser((prevUser) => {
           prevUser.myItems = data.myItems;
           prevUser.tip = data.tip;
@@ -70,7 +68,6 @@ export const UserSocketProvider = ({ children }) => {
       })
     });
 
-    // listen to events from ws server regarding members leaving the table
     socket.on('userLeft', (data) => {
       setTableMembers((prevTableMembers) => {
         return prevTableMembers.filter((member) => {

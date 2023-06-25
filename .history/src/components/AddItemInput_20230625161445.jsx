@@ -62,7 +62,7 @@ export const AddItemInput = ({ handleUserAdd, user }) => {
 				</select>
 
 			</div>
-			<button class="btn btn-block btn-outline btn-info mt-2" onClick={(e) => handleClick(e) }>ADD ITEM</button>
+			<button class="btn btn-block btn-outline btn-info mt-2" onClick={(e) => handleClick(e)}>ADD ITEM</button>
 		</>
 	)
 };

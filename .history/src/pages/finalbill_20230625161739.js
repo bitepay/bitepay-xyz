@@ -15,18 +15,10 @@ export default function Table() {
 
   socket.emit('joinTable', user);
 
-  const handleUserDelete = (user, payload) => {
-    socket.emit('userDeleteItem', {user, payload})
-  };
-  
-  const handleUserAdd = (user, payload) => {
-    socket.emit('userUpdate', {user, payload})
-  };
-
   return (
     <>
       <Head>
-        <title>BitePay - Table</title>
+        <title>BitePay - Final Bill</title>
         <meta name="description" content="The fastest and easiest way to divvy up the dining bill between your friends."></meta>
       </Head>
       <main className={`flex min-h-screen flex-col items-center p-6 ${inter.className} bg-green-300`} >
