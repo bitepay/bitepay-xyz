@@ -37,3 +37,11 @@ export const calculateBeforeTax = (tableMembers) => {
 	})
 	return Math.round(100 * total) / 100;
 }
+
+export const calculateMemberTotal = (member) => {
+	let total = 0;
+	member.myItems.forEach((item) => {
+		total += item.price;
+	})
+	return total;
+}

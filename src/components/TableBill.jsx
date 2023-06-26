@@ -10,7 +10,7 @@ export const TableBill = ({ tableMembers, user, handleUserDelete }) => {
 				<td className="px-5">{itemQuantity}</td>
 				<td className="px-5">{itemPrice}</td>
 				{/* This is where we need to add the delete button for User delete feature */}
-				<td className="px-5"><button className="btn btn-outline btn-error" onClick={() => handleUserDelete(user, item)}>DELETE</button></td>
+				<td className="px-5"><button className="btn btn-outline btn-error" onClick={() => handleUserDelete(user, item)} disabled={user.status === 'READY'}>DELETE</button></td>
 			</tr>
     )
   }
@@ -33,9 +33,20 @@ export const TableBill = ({ tableMembers, user, handleUserDelete }) => {
     <>
       <div className="collapse collapse-arrow bg-base-200 m-1">
         <input type="radio" name="my-accordion-2" defaultChecked="true"/>
-        <div className="collapse-title text-xl font-medium">
+        <div className="collapse-title">
           {/* This is where we need to render name, status, and total */}
-          {user.username}
+          <div className="flex justify-between">
+            <div className="text-lg font-medium">
+              {user.username}
+            </div>
+            <div className={`badge ${user.status === 'READY' ? 'badge-accent' : 'badge-secondary badge-outline'}`}>
+              {user.status === 'READY' ? 'READY' : 'IN PROGRESS'}
+            </div>
+            <div className="">
+
+            </div>
+
+          </div>
         </div>
         <div className="collapse-content">
           {/* This is where I need to map through user items */}

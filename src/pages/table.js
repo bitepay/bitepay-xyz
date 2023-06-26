@@ -14,7 +14,9 @@ export default function Table() {
 
   const { socket, user, tableMembers } = useUserSocketContext();
 
-  socket.emit('joinTable', user);
+  if (user.tableID !== 0) {
+    socket.emit('joinTable', user)
+  }
 
   const handleUserDelete = (user, payload) => {
     socket.emit('userDeleteItem', {user, payload})
