@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export const ProgressBar = ({ tableMembers, user, userUpdateStatus }) => {
+export const ProgressBar = ({ tableMembers, user, handleUserUpdate }) => {
 
   const [progress, setProgress] = useState(0);
 
@@ -29,7 +29,9 @@ export const ProgressBar = ({ tableMembers, user, userUpdateStatus }) => {
   }
 
   const handleClick = (e) => {
-    userUpdateStatus(user)
+
+    console.log('clicked')
+
   }
 
   const toggleStatusButton = (status) => {

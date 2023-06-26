@@ -24,27 +24,18 @@ export default function Table() {
     socket.emit('userUpdate', {user, payload})
   };
 
-  const userUpdateStatus = (user) => {
-    if (user.status === 'PROCESSING') {
-      socket.emit('userUpdateStatus', { ...user, status: 'READY' })
-    } else {
-      socket.emit('userUpdateStatus', { ...user, status: 'PROCESSING' })
-    }
-  }
-
   return (
     <>
       <Head>
         <title>BitePay - Table</title>
         <meta name="description" content="The fastest and easiest way to divvy up the dining bill between your friends."></meta>
       </Head>
-
       <main className={`flex min-h-screen flex-col items-center p-6 ${inter.className} bg-green-300`} >
+        <ProgressBar user={user} tableMembers={tableMembers} />
 
-        <ProgressBar user={user} tableMembers={tableMembers} userUpdateStatus={userUpdateStatus} />
         <TableBill user={user} tableMembers={tableMembers} handleUserDelete={handleUserDelete} />
-        <AddItemInput user={user} handleUserUpdate={handleUserUpdate} />
-
+        
+        <AddItemInput handleUserUpdate={handleUserUpdate} user={user} />
       </main>
     </>
   )

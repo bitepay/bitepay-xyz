@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
-export const ProgressBar = ({ tableMembers, user, userUpdateStatus }) => {
+export const ProgressBar = ({ tableMembers, user, handleUserUpdate }) => {
 
   const [progress, setProgress] = useState(0);
+
+  const { router } = useRouter();
 
   useEffect(() => {
     const completed = tableMembers.filter((member) => member.status === 'READY');
     const progress = Math.round(100 * ((completed.length / tableMembers.length) * 100)) / 100;
     setProgress(progress);
-
-    console.log(`Re-render triggered from tableMember update in ProgressBar. Progress is now ${progress}%`)
   }, [tableMembers])
 
   const progressBar = (progress) => {
@@ -29,37 +30,30 @@ export const ProgressBar = ({ tableMembers, user, userUpdateStatus }) => {
   }
 
   const handleClick = (e) => {
-    userUpdateStatus(user)
+    e.preventDefault();
+    router.push('/finalbill');
   }
 
-  const toggleStatusButton = (status) => {
-    return (
-      <label className="btn swap swap-rotate">
-  
-        {/* this hidden checkbox controls the state */}
-        <input type="checkbox" onClick={(e) => handleClick(e)}/>
-        
-        {/* ready icon */}
-        <div class="swap-on bg-blue-400 p-1 rounded-md">{"I'm ready"}👍</div>
-        
-        {/* not ready icon */}
-        <div class="swap-off bg-red-400 p-1 rounded-md">👎{"Not ready"}</div>
-        
-      </label>
-    )
-
+  const finalBillButton = (progress) => {
+    if (progress === 100) {
+      return (
+        <button className="bg-blue-500 hover:bg-blue-700 text-sm text-white font-bold py-2 px-4 rounded" onClick={(e) => handleClick(e)}>FINAL BILL</button> 
+      )
+    } else {
+      return (
+        <button className="bg-red-500 hover:bg-red-700 text-sm text-white font-bold p-2 px-4 rounded" disabled={true}>PENDING</button> 
+      )
+    }
   }
-
-
 
   return (
-
-      <div className="w-full flex items-center justify-between mb-.5 mx-auto pl-2 overflow-hidden rounded-lg shadow-lg bg-gray-100 uppercase border-b border-gray-100">
+    <section className="container mx-auto p-4 font-mono">
+      <div className="w-full flex items-center justify-between mb-.5 overflow-hidden rounded-lg shadow-lg bg-gray-100 uppercase border-b border-gray-100">
           {progressBar(progress)}
-        <div id="final-bill-button">
-          {toggleStatusButton(user.status)}
+        <div id="final-bill-button" className='p-2'>
+          {finalBillButton(progress)}
         </div>
       </div>
-
+    </section>
   )
 }

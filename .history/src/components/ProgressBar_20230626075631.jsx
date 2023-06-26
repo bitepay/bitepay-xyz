@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export const ProgressBar = ({ tableMembers, user, userUpdateStatus }) => {
+export const ProgressBar = ({ tableMembers, user, handleUserUpdate }) => {
 
   const [progress, setProgress] = useState(0);
 
@@ -29,7 +29,9 @@ export const ProgressBar = ({ tableMembers, user, userUpdateStatus }) => {
   }
 
   const handleClick = (e) => {
-    userUpdateStatus(user)
+
+    console.log('clicked')
+
   }
 
   const toggleStatusButton = (status) => {
@@ -40,10 +42,10 @@ export const ProgressBar = ({ tableMembers, user, userUpdateStatus }) => {
         <input type="checkbox" onClick={(e) => handleClick(e)}/>
         
         {/* ready icon */}
-        <div class="swap-on bg-blue-400 p-1 rounded-md">{"I'm ready"}👍</div>
+        <div class="swap-on">{"I'm ready"}👍</div>
         
         {/* not ready icon */}
-        <div class="swap-off bg-red-400 p-1 rounded-md">👎{"Not ready"}</div>
+        <div class="swap-off">👎{"Not ready"}</div>
         
       </label>
     )
@@ -53,13 +55,13 @@ export const ProgressBar = ({ tableMembers, user, userUpdateStatus }) => {
 
 
   return (
-
-      <div className="w-full flex items-center justify-between mb-.5 mx-auto pl-2 overflow-hidden rounded-lg shadow-lg bg-gray-100 uppercase border-b border-gray-100">
+    <section className="container mx-auto p-4 font-mono">
+      <div className="w-full flex items-center justify-between mb-.5 overflow-hidden rounded-lg shadow-lg bg-gray-100 uppercase border-b border-gray-100">
           {progressBar(progress)}
-        <div id="final-bill-button">
+        <div id="final-bill-button" className='p-2'>
           {toggleStatusButton(user.status)}
         </div>
       </div>
-
+    </section>
   )
 }

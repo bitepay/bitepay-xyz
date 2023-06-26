@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export const ProgressBar = ({ tableMembers, user, userUpdateStatus }) => {
+export const ProgressBar = ({ tableMembers, user, handleUserUpdate }) => {
 
   const [progress, setProgress] = useState(0);
 
@@ -29,7 +29,9 @@ export const ProgressBar = ({ tableMembers, user, userUpdateStatus }) => {
   }
 
   const handleClick = (e) => {
-    userUpdateStatus(user)
+
+    console.log('clicked')
+
   }
 
   const toggleStatusButton = (status) => {
@@ -53,13 +55,13 @@ export const ProgressBar = ({ tableMembers, user, userUpdateStatus }) => {
 
 
   return (
-
-      <div className="w-full flex items-center justify-between mb-.5 mx-auto pl-2 overflow-hidden rounded-lg shadow-lg bg-gray-100 uppercase border-b border-gray-100">
+    <section className="container mx-auto font-mono">
+      <div className="w-full flex items-center justify-between mb-.5 mx-auto px-auto overflow-hidden rounded-lg shadow-lg bg-gray-100 uppercase border-b border-gray-100">
           {progressBar(progress)}
         <div id="final-bill-button">
           {toggleStatusButton(user.status)}
         </div>
       </div>
-
+    </section>
   )
 }

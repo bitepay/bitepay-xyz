@@ -38,13 +38,12 @@ export default function Table() {
         <title>BitePay - Table</title>
         <meta name="description" content="The fastest and easiest way to divvy up the dining bill between your friends."></meta>
       </Head>
-
       <main className={`flex min-h-screen flex-col items-center p-6 ${inter.className} bg-green-300`} >
-
         <ProgressBar user={user} tableMembers={tableMembers} userUpdateStatus={userUpdateStatus} />
-        <TableBill user={user} tableMembers={tableMembers} handleUserDelete={handleUserDelete} />
-        <AddItemInput user={user} handleUserUpdate={handleUserUpdate} />
 
+        <TableBill user={user} tableMembers={tableMembers} handleUserDelete={handleUserDelete} />
+        
+        <AddItemInput user={user} handleUserUpdate={handleUserUpdate} />
       </main>
     </>
   )

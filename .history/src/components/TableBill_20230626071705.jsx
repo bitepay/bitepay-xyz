@@ -1,6 +1,5 @@
 export const TableBill = ({ tableMembers, user, handleUserDelete }) => {
 
-  // React element for current user's item
   const UserItem = (item) => {
     const { itemID, itemName, itemPrice, itemQuantity } = item
 
@@ -15,7 +14,6 @@ export const TableBill = ({ tableMembers, user, handleUserDelete }) => {
     )
   }
 
-  // React element for each table member's item
   const MemberItem = (item) => {
     const { itemID, itemName, itemPrice, itemQuantity } = item
 
