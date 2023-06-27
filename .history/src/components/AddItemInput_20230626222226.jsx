@@ -59,9 +59,9 @@ export const AddItemInput = ({ handleUserUpdate, user }) => {
 				</select>
 
 				<div>
-					<label className="input-group">
-						<input className="input input-bordered join-item w-24" placeholder="0.00" type="number" value={itemPrice} onChange={(e) => {setItemPrice(e.target.value)}}/>
-						<span className="text-center">$ USD</span>
+					<label className="input-group join-item pl-3">
+						<span>$</span>
+						<input className="input input-bordered join-item w-28" placeholder="Price" type="number" value={itemPrice} onChange={(e) => {setItemPrice(e.target.value)}}/>
 					</label>
 				</div>
 			</div>

@@ -1,6 +1,7 @@
 
 // import Image from 'next/image'
 import Head from "next/head"
+import { useRouter } from 'next/router'
 // import Link from "next/link"
 import { Inter } from 'next/font/google'
 
@@ -17,8 +18,12 @@ export default function Table() {
 
   const { socket, user, tableMembers } = useUserSocketContext();
 
+  const router = useRouter()
+
   if (user.tableID !== 0) {
     socket.emit('joinTable', user)
+  } else if (user.tableID === 0) {
+    router.push('/')
   }
 
   const handleUserDelete = (user, payload) => {

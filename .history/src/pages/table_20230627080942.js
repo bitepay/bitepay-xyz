@@ -1,11 +1,10 @@
 
+import { useUserSocketContext } from '@/context/UserSocketContext'
 // import Image from 'next/image'
 import Head from "next/head"
 // import Link from "next/link"
 import { Inter } from 'next/font/google'
-
-import { useUserSocketContext } from '@/context/UserSocketContext'
-
+import { TableBill } from '@/components/TableBill'
 import { AddItemInput } from '@/components/AddItemInput'
 import { ProgressBar } from '@/components/ProgressBar'
 import { UserBill } from '@/components/UserBill'
@@ -49,7 +48,7 @@ export default function Table() {
         <ProgressBar user={user} tableMembers={tableMembers} userUpdateStatus={userUpdateStatus} />
         <UserBill user={user} handleUserDelete={handleUserDelete} />
         <AddItemInput user={user} handleUserUpdate={handleUserUpdate} />
-        <MembersBill tableMembers={tableMembers} userId={user.id}/>
+        <MembersBill tableMembers={tableMembers} />
 
       </main>
     </>

@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 export const AddItemInput = ({ handleUserUpdate, user }) => {
 	const [itemName, setItemName] = useState('');
-	const [itemPrice, setItemPrice] = useState(0);
+	const [itemPrice, setItemPrice] = useState(0.00);
 	const [itemQuantity, setItemQuantity] = useState(0);
 
 	const handleClick = (e)=> {
@@ -18,7 +18,7 @@ export const AddItemInput = ({ handleUserUpdate, user }) => {
 					const payload = {itemID, itemName, itemPrice, itemQuantity};
 					handleUserUpdate(user, payload);
 					setItemName('');
-					setItemPrice(0);
+					setItemPrice(0.00);
 			} else {
 					alert("Please fill out all fields");
 			}
@@ -60,8 +60,8 @@ export const AddItemInput = ({ handleUserUpdate, user }) => {
 
 				<div>
 					<label className="input-group">
-						<input className="input input-bordered join-item w-24" placeholder="0.00" type="number" value={itemPrice} onChange={(e) => {setItemPrice(e.target.value)}}/>
-						<span className="text-center">$ USD</span>
+						<input className="input input-bordered join-item w-28" placeholder="0.00" type="number" value={parseFloat(itemPrice).toFixed(2)} onChange={(e) => {setItemPrice(e.target.value)}}/>
+						<span>$ USD</span>
 					</label>
 				</div>
 			</div>

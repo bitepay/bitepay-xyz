@@ -28,7 +28,8 @@ export const ProgressBar = ({ tableMembers, user, userUpdateStatus }) => {
     }
   }
 
-  const handleChange = () => {
+  const handleClick = (e) => {
+    e.preventDefault()
     userUpdateStatus(user)
   }
 
@@ -37,7 +38,7 @@ export const ProgressBar = ({ tableMembers, user, userUpdateStatus }) => {
       <label className="btn swap swap-rotate">
   
         {/* this hidden checkbox controls the state */}
-        <input type="checkbox" onChange={() => handleChange()} checked={user.status === 'READY'}/>
+        <input type="checkbox" onClick={(e) => handleClick(e)} checked={user.status === 'READY'}/>
         
         {/* ready icon */}
         

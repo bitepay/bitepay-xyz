@@ -10,7 +10,7 @@ export const ProgressBar = ({ tableMembers, user, userUpdateStatus }) => {
     setProgress(progress);
 
     console.log(`Re-render triggered from tableMember update in ProgressBar. Progress is now ${progress}%`)
-  }, [tableMembers])
+  }, [tableMembers, user.status])
 
   const progressBar = (progress) => {
     if (progress === 100) {
@@ -28,7 +28,7 @@ export const ProgressBar = ({ tableMembers, user, userUpdateStatus }) => {
     }
   }
 
-  const handleChange = () => {
+  const handleClick = (e) => {
     userUpdateStatus(user)
   }
 
@@ -37,12 +37,12 @@ export const ProgressBar = ({ tableMembers, user, userUpdateStatus }) => {
       <label className="btn swap swap-rotate">
   
         {/* this hidden checkbox controls the state */}
-        <input type="checkbox" onChange={() => handleChange()} checked={user.status === 'READY'}/>
+        <input type="checkbox" onClick={(e) => handleClick(e)} checked={user.status === 'READY' ? true : false}/>
         
         {/* ready icon */}
         
-        <div class="swap-on bg-red-400 p-1 rounded-md">Make changes</div>
-        <div class="swap-off bg-blue-400 p-1 rounded-md">Ready👍</div>
+        <div class="swap-on bg-blue-400 p-1 rounded-md">{"I'm ready"}👍</div>
+        <div class="swap-off bg-red-400 p-1 rounded-md">Make changes</div>
         
         {/* not ready icon */}
         

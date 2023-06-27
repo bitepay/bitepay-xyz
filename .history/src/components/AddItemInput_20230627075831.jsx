@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 export const AddItemInput = ({ handleUserUpdate, user }) => {
 	const [itemName, setItemName] = useState('');
-	const [itemPrice, setItemPrice] = useState(0);
+	const [itemPrice, setItemPrice] = useState(0.00);
 	const [itemQuantity, setItemQuantity] = useState(0);
 
 	const handleClick = (e)=> {
@@ -18,7 +18,7 @@ export const AddItemInput = ({ handleUserUpdate, user }) => {
 					const payload = {itemID, itemName, itemPrice, itemQuantity};
 					handleUserUpdate(user, payload);
 					setItemName('');
-					setItemPrice(0);
+					setItemPrice(0.00);
 			} else {
 					alert("Please fill out all fields");
 			}

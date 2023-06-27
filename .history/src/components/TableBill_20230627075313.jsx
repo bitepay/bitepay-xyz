@@ -36,14 +36,17 @@ export const TableBill = ({ tableMembers, user, handleUserDelete }) => {
         <div className="collapse-title">
           {/* This is where we need to render name, status, and total */}
           <div className="flex justify-between">
-            <div className="text-lg font-medium">
+            <div className="text-xl font-medium">
               {user.username}
             </div>
             <div className={`badge ${user.status === 'READY' ? 'badge-accent' : 'badge-secondary badge-outline'}`}>
               {user.status === 'READY' ? 'READY' : 'IN PROGRESS'}
             </div>
-            <div className="">
-
+            <div className="text-md font-light mr-4">
+              TOTAL:{' $'}
+              <div className={`badge badge-lg ${user.status === 'READY' ? 'badge-primary' : 'badge-neutral'}`}>
+                {user.total}
+              </div>
             </div>
 
           </div>

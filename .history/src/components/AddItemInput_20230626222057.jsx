@@ -33,7 +33,7 @@ export const AddItemInput = ({ handleUserUpdate, user }) => {
 				</div>
 
 
-				<select className="select select-bordered join-item" value={itemQuantity} onChange={(e) => setItemQuantity(e.target.value)}>
+				<select className="select join-item" value={itemQuantity} onChange={(e) => setItemQuantity(e.target.value)}>
 					<option disabled value={0}>QTY</option>
 					<option value={1/4}>
 							1/4
@@ -60,8 +60,8 @@ export const AddItemInput = ({ handleUserUpdate, user }) => {
 
 				<div>
 					<label className="input-group">
-						<input className="input input-bordered join-item w-24" placeholder="0.00" type="number" value={itemPrice} onChange={(e) => {setItemPrice(e.target.value)}}/>
-						<span className="text-center">$ USD</span>
+						<span>$</span>
+						<input className="input join-item w-28" placeholder="Price" type="number" value={itemPrice} onChange={(e) => {setItemPrice(e.target.value)}}/>
 					</label>
 				</div>
 			</div>

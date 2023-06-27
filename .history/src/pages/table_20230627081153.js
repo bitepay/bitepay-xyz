@@ -1,11 +1,9 @@
 
+import { useUserSocketContext } from '@/context/UserSocketContext'
 // import Image from 'next/image'
 import Head from "next/head"
 // import Link from "next/link"
 import { Inter } from 'next/font/google'
-
-import { useUserSocketContext } from '@/context/UserSocketContext'
-
 import { AddItemInput } from '@/components/AddItemInput'
 import { ProgressBar } from '@/components/ProgressBar'
 import { UserBill } from '@/components/UserBill'
