@@ -63,7 +63,7 @@ export const UserBill = ({ user, handleUserDelete }) => {
                 <div className="text-sm text-center  text-blue-400">8.875%</div>
               </td>
             </tr>
-            <tr hidden={user.status !== 'READY'}>
+            <tr>
               <td className="p-2 whitespace-nowrap">
                 <div className="text-left text-sm text-blue-400">MY TIP:</div>
               </td>

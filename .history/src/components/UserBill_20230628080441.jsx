@@ -5,7 +5,7 @@ export const UserBill = ({ user, handleUserDelete }) => {
 
     return (
       <tr key={`user-item-${itemID}`}>
-				<td className="px-4">{`${itemName} ${itemQuantity !== '1' ? `x ${Math.round((100 * itemQuantity)) / 100}` : ''}`}</td>
+				<td className="px-4">{`${itemName} ${itemQuantity !== '1' ? `x ${Math.round(100 * (user.tip / 100)) * 100}` : ''}`}</td>
 				<td className="px-4">{itemPrice}</td>
 				{/* This is where we need to add the delete button for User delete feature */}
 				<td className="px-4">
@@ -63,7 +63,7 @@ export const UserBill = ({ user, handleUserDelete }) => {
                 <div className="text-sm text-center  text-blue-400">8.875%</div>
               </td>
             </tr>
-            <tr hidden={user.status !== 'READY'}>
+            <tr>
               <td className="p-2 whitespace-nowrap">
                 <div className="text-left text-sm text-blue-400">MY TIP:</div>
               </td>

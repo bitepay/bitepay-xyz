@@ -68,17 +68,14 @@ export const AddItemInput = ({ handleUserUpdate, user, setUser }) => {
 							<input className="input input-bordered join-item w-28" placeholder="Price" type="number" value={itemPrice} onChange={(e) => {setItemPrice(e.target.value)}}/>
 							<button className="btn join-item rounded-r-full" disabled={user.status === 'READY'} onClick={(e) => handleClick(e)}>ADD ITEM</button>
 						</div>
-					</div >
-						<div hidden={user.status !== 'READY'}>
-
-							<input type="range" className="range" min={15} max={30} value={user.tip} step={1} onChange={(e) => handleTipChange(e)} />
-							<div className="w-full flex justify-between text-xs px-2">
-								<span>15%</span>
-								<span>|</span>
-								<span>MY TIP</span>
-								<span>|</span>
-								<span>30%</span>
-							</div>
+					</div>
+						<input type="range" className="range" min={15} max={30} value={user.tip} step={1} onChange={(e) => handleTipChange(e)} hidden={user.status !== 'READY'} />
+						<div className="w-full flex justify-between text-xs px-2">
+							<span>15%</span>
+							<span>|</span>
+							<span>MY TIP</span>
+							<span>|</span>
+							<span>30%</span>
 						</div>
 				</div>
 			</div>

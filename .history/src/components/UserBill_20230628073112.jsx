@@ -5,14 +5,11 @@ export const UserBill = ({ user, handleUserDelete }) => {
 
     return (
       <tr key={`user-item-${itemID}`}>
-				<td className="px-4">{`${itemName} ${itemQuantity !== '1' ? `x ${Math.round((100 * itemQuantity)) / 100}` : ''}`}</td>
-				<td className="px-4">{itemPrice}</td>
+				<td className="px-5">{itemName}</td>
+				<td className="px-5">{itemQuantity}</td>
+				<td className="px-5">{itemPrice}</td>
 				{/* This is where we need to add the delete button for User delete feature */}
-				<td className="px-4">
-          <button className="btn btn-circle btn-error" onClick={() => handleUserDelete(user, item)} disabled={user.status === 'READY'}>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-          </button>
-        </td>
+				<td className="px-5"><button className="btn btn-outline btn-error" onClick={() => handleUserDelete(user, item)} disabled={user.status === 'READY'}>DELETE</button></td>
 			</tr>
     )
   }
@@ -25,7 +22,7 @@ export const UserBill = ({ user, handleUserDelete }) => {
         <div className="flex justify-around">
           <div className="flex flex-col">
             <div className="text-lg font-medium">
-              {user.username} (ME)
+              {user.username}
             </div>
             <div className={`badge badge-sm text-xs ${user.status === 'READY' ? 'badge-accent' : 'badge-secondary badge-outline'}`}>
               {user.status === 'READY' ? 'READY' : 'PROCESSING'}
@@ -34,7 +31,7 @@ export const UserBill = ({ user, handleUserDelete }) => {
           <div className="text-sm font-light my-auto">
             TOTAL{': $ '}
             <div className={`badge ${user.status === 'READY' ? 'badge-primary' : 'badge-neutral'}`}>
-              {Math.round(100 * ((((1+(user.tip / 100))) * user.total) + (user.total * .08875))) / 100}
+              {user.total}
             </div>
           </div>
 
@@ -42,47 +39,37 @@ export const UserBill = ({ user, handleUserDelete }) => {
       </div>
       <div className="collapse-content">
         {/* This is where I need to map through user items */}
-        <table className="table-auto mx-auto text-center">
+        <table className="table-auto mx-auto">
           <thead>
             <tr>
-              <th className="px-4">Item</th>
-              <th className="px-4">Price</th>
-              <th className="px-4">Delete</th>
+              <th className="px-5">Item</th>
+              <th className="px-5">Quantity</th>
+              <th className="px-5">Price</th>
+              <th className="px-5"></th>
             </tr>
           </thead>
           <tbody>
             {user.myItems.map((item) => UserItem(item))}
             <tr>
               <td className="p-2 whitespace-nowrap">
-                <div className="text-left text-sm text-blue-400">NY TAX:</div>
+                <div className="text-left text-sm text-green-500">NY TAX:</div>
               </td>
               <td className="p-2 whitespace-nowrap">
                 <div className="text-center">------------</div>
               </td>
               <td className="p-2 whitespace-nowrap">
-                <div className="text-sm text-center  text-blue-400">8.875%</div>
-              </td>
-            </tr>
-            <tr hidden={user.status !== 'READY'}>
-              <td className="p-2 whitespace-nowrap">
-                <div className="text-left text-sm text-blue-400">MY TIP:</div>
-              </td>
-              <td className="p-2 whitespace-nowrap">
-                <div className="text-center">------------</div>
-              </td>
-              <td className="p-2 whitespace-nowrap">
-                <div className="text-sm text-center  text-blue-400">${Math.round(100 * ((1 + (user.tip / 100)) * user.total )) / 100}</div>
+                <div className="text-sm text-center  text-green-500">8.875%</div>
               </td>
             </tr>
             <tr>
               <td className="p-2 whitespace-nowrap">
-                <div className="text-left text-sm text-green-700 font-semibold">FINAL TOTAL</div>
+                <div className="text-left text-sm text-green-500">FINAL TOTAL</div>
               </td>
               <td className="p-2 whitespace-nowrap">
                 <div className="text-center">------------</div>
               </td>
               <td className="p-2 whitespace-nowrap">
-                <div className="text-sm text-center  text-green-700 font-semibold">$ {
+                <div className="text-sm text-center  text-green-500">$ {
                 Math.round(100 * ((((1+(user.tip / 100))) * user.total) + (user.total * .08875))) / 100
                 }</div>
               </td>
