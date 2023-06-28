@@ -30,7 +30,7 @@ export const AddItemInput = ({ handleUserUpdate, user, setUser }) => {
 
 	return (
 		<>
-			<div className="card glass w-auto bg-blue-200">
+			<div className="card glass bg-blue-200">
 				<div className="card-body">
 					<div className="join mx-auto">
 						

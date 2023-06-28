@@ -1,11 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export const AddItemInput = ({ handleUserUpdate, user, setUser }) => {
 	const [itemName, setItemName] = useState('');
 	const [itemPrice, setItemPrice] = useState(0);
 	const [itemQuantity, setItemQuantity] = useState(0);
+	const [userTip, setUserTip] = useState(user.tip);
 
 	const handleClick = (e) => {
+			e.preventDefault();
 			if (itemQuantity === 0) {
 					alert("Don't forget to add quantity!");
 			}
@@ -24,13 +26,13 @@ export const AddItemInput = ({ handleUserUpdate, user, setUser }) => {
 	}
 
 	const handleTipChange = (e) => {
-		e.preventDefault();
+		setUserTip(e.target.value);
 		setUser({...user, tip: parseInt(e.target.value)})
 	}
 
 	return (
 		<>
-			<div className="card glass w-auto bg-blue-200">
+			<div className="card glass bg-blue-200">
 				<div className="card-body">
 					<div className="join mx-auto">
 						
@@ -69,11 +71,11 @@ export const AddItemInput = ({ handleUserUpdate, user, setUser }) => {
 							<button className="btn join-item rounded-r-full" disabled={user.status === 'READY'} onClick={(e) => handleClick(e)}>ADD ITEM</button>
 						</div>
 					</div>
-						<input type="range" className="range" min={15} max={30} value={user.tip} step={1} onChange={(e) => handleTipChange(e)} disabled={user.status === 'READY'} />
+						<input type="number" min="15" max="30" className="range" step="1" onChange={(e) => handleTipChange(e)} />
 						<div className="w-full flex justify-between text-xs px-2">
 							<span>15%</span>
 							<span>|</span>
-							<span>MY TIP</span>
+							<span>|</span>
 							<span>|</span>
 							<span>30%</span>
 						</div>
