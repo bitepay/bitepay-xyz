@@ -3,6 +3,7 @@
 import Head from "next/head"
 // import Link from "next/link"
 import { Inter } from 'next/font/google'
+import { useRouter } from 'next/router'
 
 import { useUserSocketContext } from '@/context/UserSocketContext'
 
@@ -15,7 +16,11 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Table() {
 
+  const router = useRouter()
+
   const { socket, user, tableMembers, setUser } = useUserSocketContext();
+
+  console.log(`tableMembers: ${JSON.stringify(tableMembers)}`)
 
   if (user.tableID !== 0) {
     socket.emit('joinTable', user)
@@ -29,11 +34,15 @@ export default function Table() {
     socket.emit('userUpdate', {user, payload})
   };
 
-  const userUpdateStatus = (user) => {
-    if (user.status === 'PROCESSING') {
-      socket.emit('userUpdateStatus', { ...user, status: 'READY' })
+  const userUpdateStatus = (user, event) => {
+    if (event === 'updateTip') {
+      socket.emit('userUpdateStatus', { ...user })
     } else {
-      socket.emit('userUpdateStatus', { ...user, status: 'PROCESSING' })
+      if (user.status === 'PROCESSING') {
+        socket.emit('userUpdateStatus', { ...user, status: 'READY' })
+      } else {
+        socket.emit('userUpdateStatus', { ...user, status: 'PROCESSING' })
+      }
     }
   }
 
@@ -48,7 +57,7 @@ export default function Table() {
 
         <ProgressBar user={user} tableMembers={tableMembers} userUpdateStatus={userUpdateStatus} />
         <UserBill user={user} handleUserDelete={handleUserDelete} />
-        <AddItemInput user={user} handleUserUpdate={handleUserUpdate} setUser={setUser} />
+        <AddItemInput user={user} handleUserUpdate={handleUserUpdate} setUser={setUser} userUpdateStatus={userUpdateStatus} tableMembers={tableMembers}/>
         <MembersBill tableMembers={tableMembers} userId={user.id}/>
 
       </main>

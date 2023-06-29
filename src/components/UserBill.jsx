@@ -71,7 +71,7 @@ export const UserBill = ({ user, handleUserDelete }) => {
                 <div className="text-center">------------</div>
               </td>
               <td className="p-2 whitespace-nowrap">
-                <div className="text-sm text-center  text-blue-400">${Math.round(100 * ((1 + (user.tip / 100)) * user.total )) / 100}</div>
+                <div className="text-sm text-center  text-blue-400">${Math.round((( user.tip / 100 ) * user.total ) * 100) / 100}</div>
               </td>
             </tr>
             <tr>

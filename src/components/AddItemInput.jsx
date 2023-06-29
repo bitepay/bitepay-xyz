@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import Link from 'next/link';
 
-export const AddItemInput = ({ handleUserUpdate, user, setUser }) => {
+export const AddItemInput = ({ handleUserUpdate, user, setUser, userUpdateStatus, tableMembers }) => {
 	const [itemName, setItemName] = useState('');
 	const [itemPrice, setItemPrice] = useState(0);
 	const [itemQuantity, setItemQuantity] = useState(0);
@@ -25,12 +26,18 @@ export const AddItemInput = ({ handleUserUpdate, user, setUser }) => {
 
 	const handleTipChange = (e) => {
 		e.preventDefault();
-		setUser({...user, tip: parseInt(e.target.value)})
+		setUser({...user, tip: parseInt(e.target.value)});
+	}
+
+	const emitUserTipChange = (e) => {
+		e.preventDefault();
+		const event = 'updateTip';
+		userUpdateStatus(user, event);
 	}
 
 	return (
 		<>
-			<div className="card glass w-auto bg-blue-200">
+			<div className="card glass w-auto">
 				<div className="card-body">
 					<div className="join mx-auto">
 						
@@ -69,17 +76,31 @@ export const AddItemInput = ({ handleUserUpdate, user, setUser }) => {
 							<button className="btn join-item rounded-r-full" disabled={user.status === 'READY'} onClick={(e) => handleClick(e)}>ADD ITEM</button>
 						</div>
 					</div >
-						<div hidden={user.status !== 'READY'}>
+					<div hidden={user.status !== 'READY'}>
+						<div className="flex flex-col items-center">
 
-							<input type="range" className="range" min={15} max={30} value={user.tip} step={1} onChange={(e) => handleTipChange(e)} />
+							<input type="range" className="range" min={15} max={30} value={user.tip} step={1} onChange={(e) => handleTipChange(e)} onMouseUp={(e) => emitUserTipChange(e)} onTouchEnd={(e) => emitUserTipChange(e)}/>
 							<div className="w-full flex justify-between text-xs px-2">
 								<span>15%</span>
 								<span>|</span>
-								<span>MY TIP</span>
+								<span className="text-sm">MY TIP: {user.tip}%</span>
 								<span>|</span>
 								<span>30%</span>
 							</div>
+
+							{/* BUTTON TO SUBMIT FINAL TIP UPDATE AND TOGGLE USER STATUS */}
+							{tableMembers.filter(member => member.status === 'READY').length === tableMembers.length ? (
+								<Link href="/finalbill">
+									<button className="btn btn-info mt-4">FINAL BILL</button>
+								</Link>
+							) : (
+								<button className="btn mt-4">
+									<span className="loading loading-spinner"></span>
+									WAITING FOR OTHERS
+								</button>
+							)}
 						</div>
+					</div>
 				</div>
 			</div>
 		</>
