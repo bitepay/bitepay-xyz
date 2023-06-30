@@ -5,10 +5,9 @@ export const MembersBill = ({ tableMembers, userId }) => {
 
     return (
       <tr key={`member-item-${itemID}`}>
-        <td className="px-5">{itemName}</td>
-        <td className="px-5">{itemQuantity}</td>
-        <td className="px-5">{itemPrice}</td>
-        <td className="px-5">{' '}</td>
+        <td className="px-4">{`${itemName} ${itemQuantity !== '1' ? `x ${Math.round((100 * itemQuantity)) / 100}` : ''}`}</td>
+				<td className="px-4">{itemPrice}</td>
+        <td className="px-4">{' '}</td>
       </tr>
     )
   }
@@ -34,23 +33,68 @@ export const MembersBill = ({ tableMembers, userId }) => {
                   <div className="text-sm font-light my-auto">
                     TOTAL{': $ '}
                     <div className={`badge ${member.status === 'READY' ? 'badge-primary' : 'badge-neutral'}`}>
-                      {member.total}
+                      {Math.round(100 * ((((1+(member.tip / 100))) * member.total) + (member.total * .08875))) / 100}
                     </div>
                   </div>
                 </div>
               </div>
               <div className="collapse-content">
-              <table className="table-auto mx-auto">
+              <table className="table-auto mx-auto text-center">
                 <thead>
                   <tr>
-                    <th className="px-5">Item</th>
-                    <th className="px-5">Quantity</th>
-                    <th className="px-5">Price</th>
-                    <th className="px-5"></th>
+                    <th className="px-4">Item</th>
+                    <th className="px-4">Price</th>
+                    <th className="px-4"></th>
                   </tr>
                 </thead>
                 <tbody>
                   {member.myItems?.length ? member.myItems.map((item) => MemberItem(item)) : <tr key="user-no-items"><td>No items yet</td></tr>}
+                  <tr>
+                    <td className="p-2 whitespace-nowrap">
+                      <div className="text-left text-sm text-red-400">TOTAL BEFORE FEES</div>
+                    </td>
+                    <td className="p-2 whitespace-nowrap">
+                      <div className="text-center">-----</div>
+                    </td>
+                    <td className="p-2 whitespace-nowrap">
+                      <div className="text-sm text-center  text-red-400">${member.total}</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="p-2 whitespace-nowrap">
+                      <div className="text-left text-sm text-blue-400">NY TAX:</div>
+                    </td>
+                    <td className="p-2 whitespace-nowrap">
+                      <div className="text-center">-----</div>
+                    </td>
+                    <td className="p-2 whitespace-nowrap">
+                      <div className="text-sm text-center  text-blue-400">8.875%</div>
+                    </td>
+                  </tr>
+                  <tr hidden={member.status !== 'READY'}>
+                    <td className="p-2 whitespace-nowrap">
+                      <div className="text-left text-sm text-blue-400">USER TIP:</div>
+                    </td>
+                    <td className="p-2 whitespace-nowrap">
+                      <div className="text-center">-----</div>
+                    </td>
+                    <td className="p-2 whitespace-nowrap">
+                      <div className="text-sm text-center  text-blue-400">${Math.round((( member.tip / 100 ) * member.total ) * 100) / 100}</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="p-2 whitespace-nowrap">
+                      <div className="text-left text-sm text-green-700 font-semibold">FINAL TOTAL</div>
+                    </td>
+                    <td className="p-2 whitespace-nowrap">
+                      <div className="text-center">-----</div>
+                    </td>
+                    <td className="p-2 whitespace-nowrap">
+                      <div className="text-sm text-center  text-green-700 font-semibold">$ {
+                      Math.round(100 * ((((1+(member.tip / 100))) * member.total) + (member.total * .08875))) / 100
+                      }</div>
+                    </td>
+                  </tr>
                 </tbody>
                 </table>
               </div>

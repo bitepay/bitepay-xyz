@@ -3,6 +3,7 @@
 import Head from "next/head"
 // import Link from "next/link"
 import { Inter } from 'next/font/google'
+import { useRouter } from 'next/router'
 
 import { useUserSocketContext } from '@/context/UserSocketContext'
 
@@ -14,6 +15,8 @@ import { MembersBill } from '@/components/MembersBill'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Table() {
+
+  const router = useRouter()
 
   const { socket, user, tableMembers, setUser } = useUserSocketContext();
 

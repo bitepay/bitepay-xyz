@@ -54,10 +54,21 @@ export const UserBill = ({ user, handleUserDelete }) => {
             {user.myItems.map((item) => UserItem(item))}
             <tr>
               <td className="p-2 whitespace-nowrap">
+                <div className="text-left text-sm text-blue-400">TOTAL BEFORE FEES</div>
+              </td>
+              <td className="p-2 whitespace-nowrap">
+                <div className="text-center">-----</div>
+              </td>
+              <td className="p-2 whitespace-nowrap">
+                <div className="text-sm text-center  text-blue-400">${user.total}</div>
+              </td>
+            </tr>
+            <tr>
+              <td className="p-2 whitespace-nowrap">
                 <div className="text-left text-sm text-blue-400">NY TAX:</div>
               </td>
               <td className="p-2 whitespace-nowrap">
-                <div className="text-center">------------</div>
+                <div className="text-center">-----</div>
               </td>
               <td className="p-2 whitespace-nowrap">
                 <div className="text-sm text-center  text-blue-400">8.875%</div>
@@ -68,7 +79,7 @@ export const UserBill = ({ user, handleUserDelete }) => {
                 <div className="text-left text-sm text-blue-400">MY TIP:</div>
               </td>
               <td className="p-2 whitespace-nowrap">
-                <div className="text-center">------------</div>
+                <div className="text-center">-----</div>
               </td>
               <td className="p-2 whitespace-nowrap">
                 <div className="text-sm text-center  text-blue-400">${Math.round((( user.tip / 100 ) * user.total ) * 100) / 100}</div>
@@ -79,7 +90,7 @@ export const UserBill = ({ user, handleUserDelete }) => {
                 <div className="text-left text-sm text-green-700 font-semibold">FINAL TOTAL</div>
               </td>
               <td className="p-2 whitespace-nowrap">
-                <div className="text-center">------------</div>
+                <div className="text-center">-----</div>
               </td>
               <td className="p-2 whitespace-nowrap">
                 <div className="text-sm text-center  text-green-700 font-semibold">$ {

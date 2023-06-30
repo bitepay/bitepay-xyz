@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
-export const AddItemInput = ({ user, tableMembers, userUpdateTip, handleUserUpdate }) => {
+export const AddItemInput = ({ handleUserUpdate, user, setUser, handleTipUpdate, tableMembers, userUpdateTip }) => {
 	const [itemName, setItemName] = useState('');
 	const [itemPrice, setItemPrice] = useState(0);
 	const [itemQuantity, setItemQuantity] = useState(0);
@@ -29,9 +29,10 @@ export const AddItemInput = ({ user, tableMembers, userUpdateTip, handleUserUpda
 		<div className="card glass">
 			<div className="card-body">
 				<strong className="text-center text-black text-lg">ADD ITEMS</strong>
-
-				<div className="join mx-auto">					
+				<div className="join mx-auto">
+					
 					<input className="input input-bordered join-item max-w-34" placeholder="Item name..." value={itemName} onChange={(e) => {setItemName(e.target.value)}}/>
+
 					<select className="select select-bordered join-item" value={itemQuantity} onChange={(e) => setItemQuantity(e.target.value)}>
 						<option disabled value={0}>QTY</option>
 						<option value={1/4}>
@@ -56,8 +57,8 @@ export const AddItemInput = ({ user, tableMembers, userUpdateTip, handleUserUpda
 								4
 						</option>
 					</select>
-				</div>
 
+				</div>
 				<div className="mx-auto">
 					<div className="join">
 						<button className="btn join-item rounded-l-full bg-slate-500">USD $</button>
@@ -65,10 +66,10 @@ export const AddItemInput = ({ user, tableMembers, userUpdateTip, handleUserUpda
 						<button className="btn join-item rounded-r-full" disabled={user.status === 'READY'} onClick={(e) => handleClick(e)}>ADD ITEM</button>
 					</div>
 				</div >
-
 				<div hidden={user.status !== 'READY'}>
 					<div className="flex flex-col items-center">
-						<input type="range" className="range" min={15} max={30} value={tip} step={1} onChange={(e) => setTip(e.target.value)} onMouseUp={() => userUpdateTip(user, tip)} onTouchEnd={() => userUpdateTip(user, tip)}/>
+
+						<input type="range" className="range" min={15} max={30} value={tip} step={1} onChange={(e) => setTip(e.target.value)} onMouseUp={(e) => userUpdateTip(user, tip)} onTouchEnd={(e) => userUpdateTip(user, tip)}/>
 						<div className="w-full flex justify-between text-xs px-2">
 							<span>15%</span>
 							<span>|</span>
@@ -84,7 +85,7 @@ export const AddItemInput = ({ user, tableMembers, userUpdateTip, handleUserUpda
 							</Link>
 						) : (
 							<button className="btn mt-4">
-								<span className="loading loading-spinner"></span>
+								<span className="loading loading-spinner text-sm"></span>
 								WAITING FOR OTHERS
 							</button>
 						)}

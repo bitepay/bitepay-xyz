@@ -68,7 +68,7 @@ export const AddItemInput = ({ user, tableMembers, userUpdateTip, handleUserUpda
 
 				<div hidden={user.status !== 'READY'}>
 					<div className="flex flex-col items-center">
-						<input type="range" className="range" min={15} max={30} value={tip} step={1} onChange={(e) => setTip(e.target.value)} onMouseUp={() => userUpdateTip(user, tip)} onTouchEnd={() => userUpdateTip(user, tip)}/>
+						<input type="range" className="range" min={15} max={30} value={tip} step={1} onChange={(e) => setTip(e.target.value)} onMouseUp={(e) => userUpdateTip(user, tip)} onTouchEnd={(e) => userUpdateTip(user, tip)}/>
 						<div className="w-full flex justify-between text-xs px-2">
 							<span>15%</span>
 							<span>|</span>
