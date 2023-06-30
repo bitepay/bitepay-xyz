@@ -15,15 +15,27 @@ export const ProgressBar = ({ tableMembers, user, userUpdateStatus }) => {
   const progressBar = (progress) => {
     if (progress === 100) {
       return (
-          <div className="w-full bg-gray-200 rounded-full dark:bg-gray-700">
-            <div className="bg-green-600 text-xs font-medium text-green-100 text-center p-0.5 leading-none rounded-full" style={{width: `${progress}%`}}> {progress}% COMPLETE! </div>
+          <div className="w-full bg-gray-200 rounded-full dark:bg-gray-700 text-center text-xs">
+            <div className="bg-green-600 text-green-100 rounded-full" style={{width: `${progress}%`}}> ALL MEMBERS ARE READY! </div>
           </div>
       )
     } else {
       return (
-        <div className="w-full bg-gray-200 rounded-full dark:bg-gray-700">
-            <div className="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style={{width: `${progress < 15 ? 15 : progress}%`}}> {progress}% READY... </div>
+        <div className="flex flex-col w-full">
+          <div className="flex text-xs mx-auto">
+            WAITING FOR OTHERS
+            <span className="loading loading-spinner loading-xs"></span>
           </div>
+
+          <div className="w-full bg-gray-200 rounded-full dark:bg-gray-700 text-center text-xs">
+            <div className="bg-blue-600 text-blue-100 rounded-full" style={{width: `${progress < 25 ? 25 : progress}%`}}>
+              {progress}%
+              <span className="loading loading-dots loading-xs"></span>
+            </div>
+          </div>
+        </div>
+
+
       )
     }
   }
@@ -35,14 +47,14 @@ export const ProgressBar = ({ tableMembers, user, userUpdateStatus }) => {
 
   const toggleStatusButton = (user) => {
     return (
-      <label className="btn swap swap-rotate">
+      <label className={`btn swap swap-rotate ${user.status === 'READY' ? 'bg-red-400' : 'bg-blue-400'}`}>
   
         {/* this hidden checkbox controls the state */}
         <input type="checkbox" onChange={(e) => handleStatusToggle(e)} checked={user.status === 'READY'}/>
         {/* not ready icon */}
-        <div class="swap-on bg-red-400 p-2 rounded-md">👎Unready</div>
+        <div class="swap-on rounded-md">👎Unready</div>
         {/* ready icon */}
-        <div class="swap-off bg-blue-400 p-2 rounded-md">Ready👍</div>
+        <div class="swap-off rounded-md">Ready👍</div>
         
       </label>
     )
@@ -53,11 +65,9 @@ export const ProgressBar = ({ tableMembers, user, userUpdateStatus }) => {
 
   return (
 
-      <div className="w-full flex items-center justify-between mb-.5 mx-auto pl-2 overflow-hidden rounded-lg shadow-lg bg-gray-100 uppercase border-b border-gray-100">
-          {progressBar(progress)}
-        <div id="final-bill-button">
-          {toggleStatusButton(user)}
-        </div>
+      <div className="w-full flex items-center justify-around overflow-hidden rounded-lg shadow-lg pl-1 bg-gray-100 uppercase border-green-100">
+        {progressBar(progress)}
+        {toggleStatusButton(user)}
       </div>
 
   )
