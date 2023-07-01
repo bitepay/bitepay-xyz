@@ -84,7 +84,7 @@ export const UserSocketProvider = ({ children }) => {
 
     socket.on('disconnect', () => { 
       console.log('Disconnected from the ws server!');
-      window.location.replace('/disconnected');
+      router.replace('/disconnected');
     });
 
     // Clean up the socket connection when the component unmounts

@@ -21,10 +21,6 @@ export default function Table() {
 
   if (user.tableID !== 0) {
     socket.emit('joinTable', user)
-  } else if (user.tableID === 0) {
-    if (typeof window !== 'undefined') {
-      window.location.replace('/disconnected')
-    }
   }
 
   const handleUserDelete = (user, payload) => {

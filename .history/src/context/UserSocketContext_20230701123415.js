@@ -84,7 +84,7 @@ export const UserSocketProvider = ({ children }) => {
 
     socket.on('disconnect', () => { 
       console.log('Disconnected from the ws server!');
-      window.location.replace('/disconnected');
+      router.push('/disconnected');
     });
 
     // Clean up the socket connection when the component unmounts
@@ -96,7 +96,7 @@ export const UserSocketProvider = ({ children }) => {
       socket.off('userLeft');
       socket.disconnect();
     };
-  }, [user.id]);
+  }, [user.id, router]);
 
   // Provide the socket object to the child components
   return (
