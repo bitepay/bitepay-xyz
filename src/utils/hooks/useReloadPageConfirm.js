@@ -1,55 +1,21 @@
-"use client";
 import { useEffect } from "react";
+import Router from "next/router";
+import { useBeforeUnload } from "react-use";
 
-import { useRouter } from 'next/router'
+export const useLeavePageConfirm = (isConfirm = true, message = "Are you sure want to leave this page? You will be kicked out of your table and your entries will be lost.") => {
+    useBeforeUnload(isConfirm, message);
 
-/**
- * 
- * "use client";
-import { useEffect } from "react";
+    useEffect(() => {
+        const handler = () => {
+            if (isConfirm && !window.confirm(message)) {
+                throw "Route Canceled";
+            }
+        };
 
-export const useReloadPageConfirm = () => {
+        Router.events.on("beforeHistoryChange", handler);
 
-  useEffect(() => {
-    const handleBeforeUnload = (event) => {
-      const confirmationMessage = 'Are you sure you want to refresh the page? You will automatically be kicked out of your table and lost all of your entries.';
-      // Check if the event is due to a page refresh
-      if (window.PerformanceNavigationTiming.type === "reload") {
-        event.preventDefault();
-        event.returnValue = confirmationMessage; // Display a confirmation message
-      }
-
-      return confirmationMessage; // This is necessary for some older browsers
-    };
-
-    window.addEventListener('beforeunload', handleBeforeUnload);
-
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
-  }, [])
+        return () => {
+            Router.events.off("beforeHistoryChange", handler);
+        };
+    }, [isConfirm, message]);
 };
- */
-
-const useReloadPageConfirm = () => {
-
-  useEffect(() => {
-    const handleBeforeUnload = (event) => {
-      const confirmationMessage = 'Are you sure you want to refresh the page? You will automatically be kicked out of your table and lost all of your entries.';
-      // Check if the event is due to a page refresh
-      if (window.PerformanceNavigationTiming.type === "reload") {
-        event.preventDefault();
-        event.returnValue = confirmationMessage; // Display a confirmation message
-      }
-
-      return confirmationMessage; // This is necessary for some older browsers
-    };
-
-    window.addEventListener('beforeunload', handleBeforeUnload);
-
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
-  }, [])
-}
-export default useReloadPageConfirm
