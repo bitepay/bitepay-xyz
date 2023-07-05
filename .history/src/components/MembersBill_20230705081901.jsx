@@ -30,9 +30,9 @@ export const MembersBill = ({ tableMembers, userId }) => {
                       {member.status === 'READY' ? 'READY' : 'PROCESSING'}
                     </div>
                   </div>
-                  <div className="text-sm md:text-lg font-light my-auto">
+                  <div className="text-sm font-light my-auto">
                     TOTAL{': $ '}
-                    <div className={`badge md:badge-lg md:text-lg font-medium ${member.status === 'READY' ? 'badge-primary' : 'badge-neutral'}`}>
+                    <div className={`badge ${member.status === 'READY' ? 'badge-primary' : 'badge-neutral'}`}>
                       {Math.round(100 * ((((1+(member.tip / 100))) * member.total) + (member.total * .08875))) / 100}
                     </div>
                   </div>

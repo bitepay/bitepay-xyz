@@ -33,7 +33,7 @@ export const UserBill = ({ user, handleUserDelete }) => {
           </div>
           <div className="text-sm md:text-lg font-light my-auto">
             TOTAL{': $ '}
-            <div className={`badge md:badge-lg md:text-lg font-medium ${user.status === 'READY' ? 'badge-primary' : 'badge-neutral'}`}>
+            <div className={`badge md:badge-lg ${user.status === 'READY' ? 'badge-primary' : 'badge-neutral'}`}>
               {user.status === 'READY' ? 
                 Math.round(100 * ((((1+(user.tip / 100))) * user.total) + (user.total * .08875))) / 100 : 
                 Math.round(100 * (user.total + (user.total * .08875))) / 100

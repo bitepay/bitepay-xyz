@@ -52,9 +52,9 @@ export const ProgressBar = ({ tableMembers, user, userUpdateStatus }) => {
         {/* this hidden checkbox controls the state */}
         <input type="checkbox" onChange={(e) => handleStatusToggle(e)} checked={user.status === 'READY'}/>
         {/* not ready icon */}
-        <div class="swap-on rounded-md dark:text-white">👎Unready</div>
+        <div class="swap-on rounded-md">👎Unready</div>
         {/* ready icon */}
-        <div class="swap-off rounded-md dark:text-white">Ready👍</div>
+        <div class="swap-off rounded-md">Ready👍</div>
         
       </label>
     )

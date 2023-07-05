@@ -22,7 +22,7 @@ export const ProgressBar = ({ tableMembers, user, userUpdateStatus }) => {
     } else {
       return (
         <div className="flex flex-col w-full">
-          <div className="flex md:text-lg text-xs mx-auto dark:text-slate-800">
+          <div className="flex text-xs mx-auto dark:text-slate-800">
             WAITING FOR OTHERS
             <span className="loading loading-spinner loading-xs"></span>
           </div>
@@ -52,9 +52,9 @@ export const ProgressBar = ({ tableMembers, user, userUpdateStatus }) => {
         {/* this hidden checkbox controls the state */}
         <input type="checkbox" onChange={(e) => handleStatusToggle(e)} checked={user.status === 'READY'}/>
         {/* not ready icon */}
-        <div class="swap-on rounded-md dark:text-white">👎Unready</div>
+        <div class="swap-on rounded-md">👎Unready</div>
         {/* ready icon */}
-        <div class="swap-off rounded-md dark:text-white">Ready👍</div>
+        <div class="swap-off rounded-md">Ready👍</div>
         
       </label>
     )

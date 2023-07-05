@@ -54,7 +54,7 @@ export const ProgressBar = ({ tableMembers, user, userUpdateStatus }) => {
         {/* not ready icon */}
         <div class="swap-on rounded-md dark:text-white">👎Unready</div>
         {/* ready icon */}
-        <div class="swap-off rounded-md dark:text-white">Ready👍</div>
+        <div class="swap-off rounded-md">Ready👍</div>
         
       </label>
     )
