@@ -28,7 +28,11 @@ export const UserSocketProvider = ({ children }) => {
   // Establish the Socket.IO connection when the component mounts
   useEffect(() => {
 
-    const socket = io('https://bitepay.xyz')
+    const socket = io('https://bitepay.xyz', { 
+      transports: ['websocket'],
+      closeOnBeforeunload: false 
+    })
+    
     setSocket(socket)
 
     socket.on('connect', () => {

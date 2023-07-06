@@ -14,7 +14,7 @@ export const JoinTable = () => {
       setUser((prevUser) => ({ ...prevUser, username: e.target.value }))
       // console.log(`userName: ${JSON.stringify(user.username)}`)
     } else if (e.target.id == "tableID") {
-      setUser((prevUser) => ({ ...prevUser, tableID: parseInt(e.target.value) }))
+      setUser((prevUser) => ({ ...prevUser, tableID: e.target.value }))
       // console.log(`userName: ${JSON.stringify(user.tableID)}`)
     }
   }
