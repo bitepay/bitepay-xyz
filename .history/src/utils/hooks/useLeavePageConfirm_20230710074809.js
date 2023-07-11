@@ -2,18 +2,15 @@
 import { useEffect } from "react";
 
 export const useLeavePageConfirm = () => {
-  
-  const message = "Are you sure want to leave this page? You will be kicked out of your table and your entries will be lost."
-
   useEffect(() => {
 
     const isChrome = () => navigator.userAgent.includes('Chrome')
 
     const handler = (event) => {
       event.preventDefault()
+      const message = "Are you sure want to leave this page? You will be kicked out of your table and your entries will be lost."
       if (!isChrome) {
         event.preventDefault()
-        alert("You may have accidentally refreshed or left which disconnected you from your table. Please rejoin your friends!")
       } else {
         // console.log('userAgent has Chrome')
   

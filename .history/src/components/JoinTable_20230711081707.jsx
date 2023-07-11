@@ -1,6 +1,5 @@
 "use client"
 
-/* eslint-disable @next/next/no-img-element */
 import { useRouter } from 'next/router'
 import { useUserSocketContext } from '@/context/UserSocketContext'
 
@@ -40,7 +39,7 @@ export const JoinTable = () => {
           <div className="flex flex-col">
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Have your mates know who you are. It helps with the app&apos;s proprietary honor system!</span>
+                <span className="label-text">Have your mates know who you are... It helps your table&apos;s proprietary honor system!</span>
               </label>
               <label className="input-group">
                 <span>Name</span>

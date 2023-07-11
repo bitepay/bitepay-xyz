@@ -13,7 +13,7 @@ export const useLeavePageConfirm = () => {
       event.preventDefault()
       if (!isChrome) {
         event.preventDefault()
-        alert("You may have accidentally refreshed or left which disconnected you from your table. Please rejoin your friends!")
+        alert(message)
       } else {
         // console.log('userAgent has Chrome')
   

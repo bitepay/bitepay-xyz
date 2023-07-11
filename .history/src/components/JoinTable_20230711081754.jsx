@@ -1,6 +1,5 @@
 "use client"
 
-/* eslint-disable @next/next/no-img-element */
 import { useRouter } from 'next/router'
 import { useUserSocketContext } from '@/context/UserSocketContext'
 
