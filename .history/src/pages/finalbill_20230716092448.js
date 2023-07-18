@@ -28,7 +28,7 @@ export default function Bill() {
         <meta name="description" content="The fastest and easiest way to divvy up the dining bill between your friends."></meta>
       </Head>
 
-      <main className={`flex min-h-screen flex-col items-center justify-start p-2 md:p-8 ${inter.className} bg-gradient-to-tl from-slate-200 to-green-500`} >
+      <main className={`flex min-h-screen flex-col items-center justify-between p-2 md:p-8 ${inter.className} bg-gradient-to-tl from-slate-200 to-green-500`} >
 
       {tableMembers.length && <FinalBill tableMembers={tableMembers} />}
 

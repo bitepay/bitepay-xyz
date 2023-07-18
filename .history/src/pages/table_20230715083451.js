@@ -48,25 +48,14 @@ export default function Table() {
     socket.emit('userUpdateStatus', { ...user, tip: tip })
   }
 
-/*   const inviteMessage = {
-    title: `BitePay invitation from ${user.name}`,
-    message: 'Hey join here to split the bill and uphold peace by participating in the honor system!',
-    url: `https://bitepay.xyz/join?tableID=${user.tableID}&inviter=${user.name}`,
+  const inviteMessage = {
+    message: "",
+    
   }
 
-  const userInvite = async () => {
-    if (navigator.canShare()) {
-
-      try {
-        await navigator.share(inviteMessage)
-        resultPara.textContent = "Table invite shared successfully";
-      } catch (err) {
-        resultPara.textContent = `Error: ${err}`;
-      } 
-    } else {
-      alert('Your current browser does not support Web Share API. Please tell your friends to join using the table ID from the home page.')
-    }
-  } */
+  const userInvite = () => {
+    return Navigator.clipboard.writeText()
+  }
 
   return (
     <>
@@ -75,7 +64,7 @@ export default function Table() {
         <meta name="description" content="The fastest and easiest way to divvy up the dining bill between your friends."></meta>
       </Head>
 
-      <main className={`flex min-h-screen flex-col items-center justify-start p-2 md:p-8 ${inter.className} bg-gradient-to-tl from-slate-200 to-green-500`} >
+      <main className={`flex min-h-screen min-w-full flex-col items-center p-2 ${inter.className} bg-green-300`} >
 
         <ProgressBar user={user} tableMembers={tableMembers} userUpdateStatus={userUpdateStatus} />
         <UserBill user={user} handleUserDelete={handleUserDelete} />

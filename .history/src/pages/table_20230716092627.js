@@ -48,10 +48,10 @@ export default function Table() {
     socket.emit('userUpdateStatus', { ...user, tip: tip })
   }
 
-/*   const inviteMessage = {
+  const inviteMessage = {
     title: `BitePay invitation from ${user.name}`,
     message: 'Hey join here to split the bill and uphold peace by participating in the honor system!',
-    url: `https://bitepay.xyz/join?tableID=${user.tableID}&inviter=${user.name}`,
+    url: `https://bitepay.xyz/join?tableID=${user.tableID}`,
   }
 
   const userInvite = async () => {
@@ -66,7 +66,7 @@ export default function Table() {
     } else {
       alert('Your current browser does not support Web Share API. Please tell your friends to join using the table ID from the home page.')
     }
-  } */
+  }
 
   return (
     <>

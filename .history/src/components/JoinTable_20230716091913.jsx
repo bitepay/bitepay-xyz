@@ -28,7 +28,7 @@ export const JoinTable = () => {
   const generateUID = (e) => {
     e.preventDefault()
     let UID = Math.ceil(Math.random()*1000000000)
-    setUser((prevUser) => ({ ...prevUser, tableID: UID }));
+    setUser({...user, tableID: UID});
   }
 
   return (
