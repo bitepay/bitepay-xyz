@@ -14,7 +14,7 @@ export const MembersBill = ({ tableMembers, userId }) => {
 
   return (
     <>
-      {tableMembers.length <= 0 && tableMembers.map((member) => {
+      {tableMembers.length && tableMembers.map((member) => {
         if (member.id !== userId) {
           return (
             <div key={`${member.id}-list-items`} className="collapse collapse-arrow bg-base-200 m-1">

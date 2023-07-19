@@ -8,6 +8,7 @@ export const JoinTable = () => {
   const router = useRouter()
 
   const { user, setUser } = useUserSocketContext()
+  // console.log(`Current user object: ${JSON.stringify(user)}`)
 
   const handleInput = (e) => {
     if (e.target.id == "userName") {
@@ -18,14 +19,14 @@ export const JoinTable = () => {
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    router.push(`/table`)
+    e.preventDefault();
+    router.push(`/table`);
   };
 
   const generateUID = (e) => {
     e.preventDefault()
     let UID = Math.ceil(Math.random()*1000000000)
-    setUser((prevUser) => ({ ...prevUser, tableID: UID }))
+    setUser((prevUser) => ({ ...prevUser, tableID: UID }));
   }
 
   return (

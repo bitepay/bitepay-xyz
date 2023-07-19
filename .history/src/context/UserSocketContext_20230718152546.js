@@ -105,11 +105,11 @@ export const UserSocketProvider = ({ children }) => {
     <UserSocketContext.Provider value={{socket, user, setUser, tableMembers, setTableMembers}}>
       {children}
     </UserSocketContext.Provider>
-  )
-}
+  );
+};
 
 // Export the SocketContext
 export default UserSocketContext
 
 // Export a custom hook that can be used to consume this context
-export const useUserSocketContext = () => useContext(UserSocketContext)
+export const useUserSocketContext = () => useContext(UserSocketContext); 

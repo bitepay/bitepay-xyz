@@ -1,22 +1,22 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import { useRouter } from 'next/router'
 
 export const AddItemInput = ({ user, tableMembers, userUpdateTip, handleUserUpdate }) => {
-	const [itemName, setItemName] = useState('')
-	const [itemPrice, setItemPrice] = useState(0)
-	const [itemQuantity, setItemQuantity] = useState(0)
-	const [tip, setTip] = useState(user.tip)
+	const [itemName, setItemName] = useState('');
+	const [itemPrice, setItemPrice] = useState(0);
+	const [itemQuantity, setItemQuantity] = useState(0);
+	const [tip, setTip] = useState(user.tip);
 
 	const handleClick = (e) => {
 		if (itemQuantity === 0) {
-			alert("Don't forget to add quantity!")
+			alert("Don't forget to add quantity!");
 		}
 		else if (itemPrice <= 0) {
-			alert("Please don't forget to add your item's price!")
+			alert("Please don't forget to add your item's price!");
 		}
 		else if (itemName != "" && itemPrice > 0 && itemQuantity > 0) {
-			const itemID = Math.ceil(Math.random()*1000000000)
-			const payload = {itemID, itemName, itemPrice, itemQuantity}
+			const itemID = Math.ceil(Math.random()*1000000000);
+			const payload = {itemID, itemName, itemPrice, itemQuantity};
 			handleUserUpdate(user, payload)
 			setItemName('')
 			setItemPrice(0)
@@ -25,11 +25,11 @@ export const AddItemInput = ({ user, tableMembers, userUpdateTip, handleUserUpda
 		}
 	}
 
-	const router = useRouter()
+	const router = useRouter();
 
 	const handleSubmit = (e) => {
-		e.preventDefault()
-		router.push(`/finalbill`)
+		e.preventDefault();
+		router.push(`/finalbill`);
 	}
 
 	return (

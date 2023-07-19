@@ -2,11 +2,12 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { useRouter } from 'next/router'
-import { useSearchParams } from 'next/navigation'
-import Head from "next/head";
-import { Inter } from 'next/font/google'
-
 import { useUserSocketContext } from '@/context/UserSocketContext'
+import { useSearchParams } from 'next/navigation'
+
+import Head from "next/head";
+
+import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 

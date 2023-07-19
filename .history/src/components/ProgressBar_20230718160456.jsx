@@ -21,14 +21,14 @@ export const ProgressBar = ({ tableMembers, user, userUpdateStatus }) => {
     } else {
       return (
         <div className="flex flex-col w-full">
-          <div className="flex md:text-md text-xs mx-auto dark:text-slate-800">
+          <div className="flex md:text-lg text-xs mx-auto dark:text-slate-800">
             WAITING FOR OTHERS
             <span className="loading loading-spinner loading-xs"></span>
           </div>
 
           <div className="w-full bg-gray-200 rounded-full dark:bg-gray-700 text-center text-xs">
             <div className="bg-blue-600 text-blue-100 rounded-full text-xs" style={{width: `${progress < 25 ? 25 : progress}%`}}>
-              {progress}%
+              <p className="text-xs w-full">ONLY {progress}% ARE READY</p>
               <span className="loading loading-dots loading-xs"></span>
             </div>
           </div>
@@ -46,7 +46,7 @@ export const ProgressBar = ({ tableMembers, user, userUpdateStatus }) => {
 
   const toggleStatusButton = (user) => {
     return (
-      <label className={`btn swap swap-rotate ml-1 ${user.status === 'READY' ? 'bg-red-400' : 'bg-blue-400'}`}>
+      <label className={`btn swap swap-rotate ${user.status === 'READY' ? 'bg-red-400' : 'bg-blue-400'}`}>
   
         {/* this hidden checkbox controls the state */}
         <input type="checkbox" onChange={(e) => handleStatusToggle(e)} checked={user.status === 'READY'}/>
@@ -64,7 +64,7 @@ export const ProgressBar = ({ tableMembers, user, userUpdateStatus }) => {
 
   return (
 
-      <div className="w-full flex items-center justify-between overflow-hidden rounded-lg shadow-lg pl-1 bg-gray-100 uppercase border-green-100">
+      <div className="w-full flex items-center justify-around overflow-hidden rounded-lg shadow-lg pl-1 bg-gray-100 uppercase border-green-100">
         {progressBar(progress)}
         {toggleStatusButton(user)}
       </div>

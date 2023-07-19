@@ -105,8 +105,8 @@ export const UserSocketProvider = ({ children }) => {
     <UserSocketContext.Provider value={{socket, user, setUser, tableMembers, setTableMembers}}>
       {children}
     </UserSocketContext.Provider>
-  )
-}
+  );
+};
 
 // Export the SocketContext
 export default UserSocketContext

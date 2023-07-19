@@ -21,7 +21,7 @@ export const ProgressBar = ({ tableMembers, user, userUpdateStatus }) => {
     } else {
       return (
         <div className="flex flex-col w-full">
-          <div className="flex md:text-md text-xs mx-auto dark:text-slate-800">
+          <div className="flex md:text-lg text-xs mx-auto dark:text-slate-800">
             WAITING FOR OTHERS
             <span className="loading loading-spinner loading-xs"></span>
           </div>
